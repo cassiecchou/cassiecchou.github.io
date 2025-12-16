@@ -6,8 +6,6 @@ links:
     url: "https://linkedin.com/in/cassiecchou"
   - label: GitHub
     url: "https://github.com/cassiecchou"
-  - label: Email
-    href: "mailto:cchou24@jh.edu"
 output:
   postcards::trestles:
     css: styles.css
@@ -19,6 +17,7 @@ I am a master's student at the Johns Hopkins Bloomberg School of Public Health s
 
 I am fortunate to be currently advised by Dr. Benjamin Huynh and Dr. Scott Zeger at Johns Hopkins, and previously advised by Dr. Noah Zaitlen and Jamie Matthews at UCLA.
 
+If you'd like to reach out, my email is cchou24 {at} jh {dot} edu.
 
 ### Education {#education}
 
