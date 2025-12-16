@@ -1,0 +1,19 @@
+body {
+  background-color: #F0E4E4;
+}
+
+h3 {
+  margin-top: 2em; 
+  font-size: 1.1em;      
+  font-weight: 600; 
+}
+
+#education + p,
+#education + p + p + p {
+  font-size: 0.9em;
+}
+
+#education + p + p,
+#education + p + p + p + p {
+  font-size: 0.7em;
+}
