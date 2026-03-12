@@ -2,32 +2,22 @@ body {
   background-color: #F0E4E4;
 }
 
-/* Tab styling */
-.nav-tabs {
-  border-bottom: 2px solid #c9a0a0;
-  margin-bottom: 1.5em;
+/* Navbar styling */
+.navbar {
+  background-color: #d4b0b0 !important;
+  border-color: #c9a0a0 !important;
 }
 
-.nav-tabs .nav-link {
-  color: #8b5e5e;
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav > li > a {
+  color: #5a3a3a !important;
   font-weight: 500;
-  border: none;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -2px;
-  background: none;
 }
 
-.nav-tabs .nav-link:hover {
-  color: #5a3a3a;
-  border-bottom-color: #c9a0a0;
-}
-
-.nav-tabs .nav-link.active {
-  color: #5a3a3a;
-  font-weight: 600;
-  background: none;
-  border: none;
-  border-bottom: 2px solid #5a3a3a;
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > .active > a {
+  color: #3a1a1a !important;
+  background-color: #c9a0a0 !important;
 }
 
 h3 {
