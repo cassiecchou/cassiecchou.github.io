@@ -6,33 +6,64 @@ output:
     theme: flatly
 ---
 
-```{r slideshow, echo=FALSE, results='asis'}
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
 photos <- list.files("buffy_photos",
                      pattern = "\\.(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$",
                      full.names = FALSE)
+```
 
+```{r slideshow, results='asis'}
 if (length(photos) == 0) {
   cat('<p class="text-center" style="margin-top:3em; color:#8b5e5e;">
-        No photos found yet — add images to the <code>buffy_photos</code> folder!
-      </p>')
+        No photos found — add images to the <code>buffy_photos/</code> folder and re-render.
+      </p>\n')
 } else {
-  cat('<div class="slideshow-wrapper">\n')
-  cat('  <div id="buffyCarousel" class="carousel slide" data-ride="carousel" data-interval="2500">\n')
-  cat('    <div class="carousel-inner">\n')
+  cat('<div class="buffy-outer">\n')
+  cat('  <div class="buffy-container" id="buffyContainer">\n')
   for (i in seq_along(photos)) {
-    active <- if (i == 1) " active" else ""
-    cat(sprintf('      <div class="item%s">\n', active))
-    cat(sprintf('        <img src="buffy_photos/%s" class="slideshow-img" alt="Buffy photo %d">\n', photos[i], i))
-    cat('      </div>\n')
+    cls <- if (i == 1) "buffy-slide active" else "buffy-slide"
+    cat(sprintf('    <img src="buffy_photos/%s" class="%s" alt="Buffy photo %d">\n',
+                photos[i], cls, i))
   }
-  cat('    </div>\n')
-  cat('    <a class="left carousel-control" href="#buffyCarousel" role="button" data-slide="prev">\n')
-  cat('      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>\n')
-  cat('    </a>\n')
-  cat('    <a class="right carousel-control" href="#buffyCarousel" role="button" data-slide="next">\n')
-  cat('      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>\n')
-  cat('    </a>\n')
+  cat('  </div>\n')
+  cat('  <button class="buffy-btn buffy-prev" onclick="buffyPrev()">&#10094;</button>\n')
+  cat('  <button class="buffy-btn buffy-next" onclick="buffyNext()">&#10095;</button>\n')
+  cat('  <div class="buffy-dots">\n')
+  for (i in seq_along(photos)) {
+    cls <- if (i == 1) 'class="buffy-dot active"' else 'class="buffy-dot"'
+    cat(sprintf('    <span %s onclick="buffyGoTo(%d)"></span>\n', cls, i - 1))
+  }
   cat('  </div>\n')
   cat('</div>\n')
+
+  cat(sprintf('
+<script>
+(function() {
+  var current = 0;
+  var total = %d;
+  var timer;
+
+  function show(n) {
+    var slides = document.querySelectorAll(".buffy-slide");
+    var dots   = document.querySelectorAll(".buffy-dot");
+    slides[current].classList.remove("active");
+    dots[current].classList.remove("active");
+    current = ((n %% total) + total) %% total;
+    slides[current].classList.add("active");
+    dots[current].classList.add("active");
+  }
+
+  function auto() {
+    timer = setTimeout(function() { show(current + 1); auto(); }, 3000);
+  }
+
+  window.buffyNext  = function() { clearTimeout(timer); show(current + 1); auto(); };
+  window.buffyPrev  = function() { clearTimeout(timer); show(current - 1); auto(); };
+  window.buffyGoTo  = function(n) { clearTimeout(timer); show(n); auto(); };
+
+  auto();
+})();
+</script>\n', length(photos)))
 }
 ```
