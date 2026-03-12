@@ -1,0 +1,11 @@
+name: "cassiecchou"
+output_dir: "."
+navbar:
+  title: "Cassie Chou"
+  left:
+    - text: "Introduction"
+      href: index.html
+    - text: "Research"
+      href: research.html
+    - text: "Extracurricular & Volunteer"
+      href: activities.html
