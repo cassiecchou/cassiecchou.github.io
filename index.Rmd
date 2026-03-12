@@ -1,16 +1,24 @@
 ---
 title: "Cassie Chou"
-image: "CassieProfilePic.jpeg"
-links:
-  - label: LinkedIn
-    url: "https://linkedin.com/in/cassiecchou"
-  - label: GitHub
-    url: "https://github.com/cassiecchou"
 output:
-  postcards::trestles:
+  html_document:
+    theme: flatly
     css: styles.css
-    self_contained: false
 ---
+
+<div class="row profile-row">
+<div class="col-md-4 profile-sidebar text-center">
+
+![](CassieProfilePic.jpeg)
+
+### Cassie Chou
+
+<a href="https://linkedin.com/in/cassiecchou" class="profile-link">LinkedIn</a>
+
+<a href="https://github.com/cassiecchou" class="profile-link">GitHub</a>
+
+</div>
+<div class="col-md-8 profile-content">
 
 ## About Me
 
@@ -27,3 +35,6 @@ ScM in Biostatistics | August 2024 - May 2026
 
 *The University of California, Los Angeles (UCLA)* | Los Angeles, CA
 B.S. in Computational and Systems Biology, Minor in Statistics and Data Science | September 2020 - June 2024
+
+</div>
+</div>
