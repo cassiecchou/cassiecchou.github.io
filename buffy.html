@@ -11,7 +11,7 @@
 
 
 
-<title>Teaching, Extracurricular &amp; Volunteer Activities</title>
+<title>Buffy</title>
 
 <script src="site_libs/header-attrs-2.28/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -267,53 +267,62 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Teaching, Extracurricular &amp; Volunteer
-Activities</h1>
+<h1 class="title toc-ignore">Buffy</h1>
 
 </div>
 
 
-<p><br></p>
-<div id="johns-hopkins-department-of-biostatistics"
-class="section level4">
-<h4>Johns Hopkins Department of Biostatistics</h4>
-<p><em>Graduate Course Development Assistant</em><br />
-Assisting Dr. John McGready and Daniel Obeng in the development of
-in-person versions of Data Analysis Workshop I and II (140.613 &amp;
-140.614).</p>
-<p><br></p>
+<div class="buffy-outer">
+<div class="buffy-container" id="buffyContainer">
+<img src="buffy_photos/IMG_5179.JPG" class="buffy-slide active" alt="Buffy photo 1"/>
+<img src="buffy_photos/IMG_5224.JPG" class="buffy-slide" alt="Buffy photo 2"/>
+<img src="buffy_photos/IMG_5271.JPG" class="buffy-slide" alt="Buffy photo 3"/>
+<img src="buffy_photos/IMG_5993.JPG" class="buffy-slide" alt="Buffy photo 4"/>
+<img src="buffy_photos/IMG_7525.JPG" class="buffy-slide" alt="Buffy photo 5"/>
+<img src="buffy_photos/IMG_8962.JPG" class="buffy-slide" alt="Buffy photo 6"/>
+<img src="buffy_photos/IMG_9153.JPG" class="buffy-slide" alt="Buffy photo 7"/>
+<img src="buffy_photos/IMG_9507.JPG" class="buffy-slide" alt="Buffy photo 8"/>
+<img src="buffy_photos/IMG_9516.JPG" class="buffy-slide" alt="Buffy photo 9"/>
+<img src="buffy_photos/IMG_9648.JPG" class="buffy-slide" alt="Buffy photo 10"/>
+<img src="buffy_photos/IMG_9677.JPG" class="buffy-slide" alt="Buffy photo 11"/>
 </div>
-<div id="democrashe" class="section level4">
-<h4>DemocraShe</h4>
-<p><em>Workshop Facilitator, Founding Leadership Team</em><br />
-A nonpartisan nonprofit organization empowering young women on their
-paths to leadership. For more information on who we are and our program,
-please visit: <a
-href="https://www.democrashe.org/">https://www.democrashe.org/</a></p>
-<p><br></p>
+<button class="buffy-btn buffy-prev" onclick="buffyPrev()">&#10094;</button>
+<button class="buffy-btn buffy-next" onclick="buffyNext()">&#10095;</button>
+<div class="buffy-dots">
+<span class="buffy-dot active" onclick="buffyGoTo(0)"></span>
+<span class="buffy-dot" onclick="buffyGoTo(1)"></span>
+<span class="buffy-dot" onclick="buffyGoTo(2)"></span>
+<span class="buffy-dot" onclick="buffyGoTo(3)"></span>
+<span class="buffy-dot" onclick="buffyGoTo(4)"></span>
+<span class="buffy-dot" onclick="buffyGoTo(5)"></span>
+<span class="buffy-dot" onclick="buffyGoTo(6)"></span>
+<span class="buffy-dot" onclick="buffyGoTo(7)"></span>
+<span class="buffy-dot" onclick="buffyGoTo(8)"></span>
+<span class="buffy-dot" onclick="buffyGoTo(9)"></span>
+<span class="buffy-dot" onclick="buffyGoTo(10)"></span>
 </div>
-<div id="statistics-in-the-community-statcom-at-johns-hopkins"
-class="section level4">
-<h4>Statistics in the Community (STATCOM) at Johns Hopkins</h4>
-<p><em>Co-President, Co-Founder</em><br />
-A student organization providing pro bono statistical consulting
-services to community and nonprofit organizations. For more information
-or to request services, please visit: <a
-href="https://jhustatcom.github.io/statcom.github.io/">https://jhustatcom.github.io/statcom.github.io/</a></p>
-<p><br></p>
 </div>
-<div
-id="masters-student-co-representative-at-johns-hopkins-biostatistics"
-class="section level4">
-<h4>Master’s Student Co-Representative at Johns Hopkins
-Biostatistics</h4>
-<p><br></p>
-</div>
-<div id="biostatistics-student-organization-at-johns-hopkins"
-class="section level4">
-<h4>Biostatistics Student Organization at Johns Hopkins</h4>
-<p><em>Events Committee Member</em></p>
-</div>
+<script>
+(function() {
+  var current = 0;
+  var total = 11;
+  var timer;
+  function show(n) {
+    var slides = document.querySelectorAll(".buffy-slide");
+    var dots   = document.querySelectorAll(".buffy-dot");
+    slides[current].classList.remove("active");
+    dots[current].classList.remove("active");
+    current = ((n % total) + total) % total;
+    slides[current].classList.add("active");
+    dots[current].classList.add("active");
+  }
+  function auto() { timer = setTimeout(function() { show(current + 1); auto(); }, 3000); }
+  window.buffyNext = function() { clearTimeout(timer); show(current + 1); auto(); };
+  window.buffyPrev = function() { clearTimeout(timer); show(current - 1); auto(); };
+  window.buffyGoTo = function(n) { clearTimeout(timer); show(n); auto(); };
+  auto();
+})();
+</script>
 
 
 
