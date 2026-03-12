@@ -6,44 +6,23 @@ output:
     theme: flatly
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r slideshow, echo=FALSE}
+library(htmltools)
+
 photos <- list.files("buffy_photos",
                      pattern = "\\.(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$",
                      full.names = FALSE)
-```
 
-```{r slideshow, results='asis'}
 if (length(photos) == 0) {
-  cat('<p class="text-center" style="margin-top:3em; color:#8b5e5e;">
-        No photos found — add images to the <code>buffy_photos/</code> folder and re-render.
-      </p>\n')
+  HTML('<p style="text-align:center; margin-top:3em; color:#8b5e5e;">
+         No photos found — add images to the <code>buffy_photos/</code> folder and re-render.
+       </p>')
 } else {
-  cat('<div class="buffy-outer">\n')
-  cat('  <div class="buffy-container" id="buffyContainer">\n')
-  for (i in seq_along(photos)) {
-    cls <- if (i == 1) "buffy-slide active" else "buffy-slide"
-    cat(sprintf('    <img src="buffy_photos/%s" class="%s" alt="Buffy photo %d">\n',
-                photos[i], cls, i))
-  }
-  cat('  </div>\n')
-  cat('  <button class="buffy-btn buffy-prev" onclick="buffyPrev()">&#10094;</button>\n')
-  cat('  <button class="buffy-btn buffy-next" onclick="buffyNext()">&#10095;</button>\n')
-  cat('  <div class="buffy-dots">\n')
-  for (i in seq_along(photos)) {
-    cls <- if (i == 1) 'class="buffy-dot active"' else 'class="buffy-dot"'
-    cat(sprintf('    <span %s onclick="buffyGoTo(%d)"></span>\n', cls, i - 1))
-  }
-  cat('  </div>\n')
-  cat('</div>\n')
-
-  cat(sprintf('
-<script>
+  js <- sprintf('
 (function() {
   var current = 0;
   var total = %d;
   var timer;
-
   function show(n) {
     var slides = document.querySelectorAll(".buffy-slide");
     var dots   = document.querySelectorAll(".buffy-dot");
@@ -53,17 +32,39 @@ if (length(photos) == 0) {
     slides[current].classList.add("active");
     dots[current].classList.add("active");
   }
-
-  function auto() {
-    timer = setTimeout(function() { show(current + 1); auto(); }, 3000);
-  }
-
-  window.buffyNext  = function() { clearTimeout(timer); show(current + 1); auto(); };
-  window.buffyPrev  = function() { clearTimeout(timer); show(current - 1); auto(); };
-  window.buffyGoTo  = function(n) { clearTimeout(timer); show(n); auto(); };
-
+  function auto() { timer = setTimeout(function() { show(current + 1); auto(); }, 3000); }
+  window.buffyNext = function() { clearTimeout(timer); show(current + 1); auto(); };
+  window.buffyPrev = function() { clearTimeout(timer); show(current - 1); auto(); };
+  window.buffyGoTo = function(n) { clearTimeout(timer); show(n); auto(); };
   auto();
 })();
-</script>\n', length(photos)))
+', length(photos))
+
+  tagList(
+    div(class = "buffy-outer",
+      div(class = "buffy-container", id = "buffyContainer",
+        lapply(seq_along(photos), function(i) {
+          tags$img(
+            src   = paste0("buffy_photos/", photos[i]),
+            class = if (i == 1) "buffy-slide active" else "buffy-slide",
+            alt   = paste("Buffy photo", i)
+          )
+        })
+      ),
+      tags$button(class = "buffy-btn buffy-prev", onclick = "buffyPrev()",
+                  HTML("&#10094;")),
+      tags$button(class = "buffy-btn buffy-next", onclick = "buffyNext()",
+                  HTML("&#10095;")),
+      div(class = "buffy-dots",
+        lapply(seq_along(photos), function(i) {
+          tags$span(
+            class   = if (i == 1) "buffy-dot active" else "buffy-dot",
+            onclick = paste0("buffyGoTo(", i - 1, ")")
+          )
+        })
+      )
+    ),
+    tags$script(HTML(js))
+  )
 }
 ```
