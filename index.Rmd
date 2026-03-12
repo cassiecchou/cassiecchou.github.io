@@ -9,6 +9,7 @@ links:
 output:
   postcards::trestles:
     css: styles.css
+    self_contained: false
 ---
 
 ## About Me
