@@ -1,0 +1,38 @@
+---
+title: "Buffy"
+output:
+  html_document:
+    css: styles.css
+    theme: flatly
+---
+
+```{r slideshow, echo=FALSE, results='asis'}
+photos <- list.files("buffy_photos",
+                     pattern = "\\.(jpg|jpeg|png|gif|JPG|JPEG|PNG|GIF)$",
+                     full.names = FALSE)
+
+if (length(photos) == 0) {
+  cat('<p class="text-center" style="margin-top:3em; color:#8b5e5e;">
+        No photos found yet — add images to the <code>buffy_photos</code> folder!
+      </p>')
+} else {
+  cat('<div class="slideshow-wrapper">\n')
+  cat('  <div id="buffyCarousel" class="carousel slide" data-ride="carousel" data-interval="2500">\n')
+  cat('    <div class="carousel-inner">\n')
+  for (i in seq_along(photos)) {
+    active <- if (i == 1) " active" else ""
+    cat(sprintf('      <div class="item%s">\n', active))
+    cat(sprintf('        <img src="buffy_photos/%s" class="slideshow-img" alt="Buffy photo %d">\n', photos[i], i))
+    cat('      </div>\n')
+  }
+  cat('    </div>\n')
+  cat('    <a class="left carousel-control" href="#buffyCarousel" role="button" data-slide="prev">\n')
+  cat('      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>\n')
+  cat('    </a>\n')
+  cat('    <a class="right carousel-control" href="#buffyCarousel" role="button" data-slide="next">\n')
+  cat('      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>\n')
+  cat('    </a>\n')
+  cat('  </div>\n')
+  cat('</div>\n')
+}
+```

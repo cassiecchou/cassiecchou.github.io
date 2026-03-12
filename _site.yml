@@ -9,3 +9,5 @@ navbar:
       href: research.html
     - text: "Extracurricular & Volunteer"
       href: activities.html
+    - text: "Buffy"
+      href: buffy.html
