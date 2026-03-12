@@ -1,10 +1,34 @@
 ---
-title: "Extracurricular & Volunteer Activities"
+title: "Teaching, Extracurricular & Volunteer Activities"
 output:
   html_document:
     css: styles.css
     theme: flatly
 ---
 
-## Extracurricular & Volunteer Activities
+<br>
 
+#### Johns Hopkins Department of Biostatistics
+*Graduate Course Development Assistant*  
+Assisting Dr. John McGready and Daniel Obeng in the development of in-person versions of Data Analysis Workshop I and II (140.613 & 140.614).
+
+<br>
+
+#### DemocraShe
+*Workshop Facilitator, Founding Leadership Team*  
+A nonpartisan nonprofit organization empowering young women on their paths to leadership. For more information on who we are and our program, please visit: [https://www.democrashe.org/](https://www.democrashe.org/)
+
+<br>
+
+#### Statistics in the Community (STATCOM) at Johns Hopkins
+*Co-President, Co-Founder*  
+A student organization providing pro bono statistical consulting services to community and nonprofit organizations. For more information or to request services, please visit: [https://jhustatcom.github.io/statcom.github.io/](https://jhustatcom.github.io/statcom.github.io/)
+
+<br>
+
+#### Master's Student Co-Representative at Johns Hopkins Biostatistics
+
+<br>
+
+#### Biostatistics Student Organization at Johns Hopkins
+*Events Committee Member*

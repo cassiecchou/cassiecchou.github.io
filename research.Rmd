@@ -6,5 +6,18 @@ output:
     theme: flatly
 ---
 
-## Research
+### Current Projects
 
+#### Validity in Machine Learning for Extreme Event Attribution
+Chou, Cassandra C., Scott L. Zeger, and Benjamin Q. Huynh. (2025). Validity in machine learning for extreme event attribution. *arXiv preprint* arXiv: 2511.19039. Available from: [https://arxiv.org/abs/2511.19039](https://arxiv.org/abs/2511.19039)
+
+<br>
+
+#### Deaths in Custody: Demographic Patterns and the Reliability of Medical Autopsies
+STATCOM at Johns Hopkins in collaboration with the Autopsy Initiative, Know Your Rights Camp 
+
+<br>
+
+### Past Projects
+
+#### Chicago Lead Levels and Sampling Representativeness
